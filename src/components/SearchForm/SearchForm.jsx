@@ -1,4 +1,5 @@
 
+
 import { useSearchParams } from "react-router-dom";
 
 export default function SearchForm() {
@@ -9,7 +10,7 @@ export default function SearchForm() {
         const query = e.target.elements.query.value.trim();
         
         if (query) {
-            setSearchParams({ query }); // Update the URL with the search query
+            setSearchParams({ query }); 
         }
     };
 
