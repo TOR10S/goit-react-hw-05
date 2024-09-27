@@ -10,8 +10,7 @@ export default function MovieDetailsPage() {
   const [film, setFilm] = useState(null);
   const { movieID } = useParams(); 
 
-  const defaultImg =
-    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
+  const defaultImg = "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -33,11 +32,7 @@ export default function MovieDetailsPage() {
   return (
     <div>
       <button onClick={() => {
-        if (location.state?.from) {
-          navigate(backLink.current);
-        } else {
-          navigate('/movies');
-        }
+        navigate(backLink.current);
       }}>Back</button>
       <img src={film.poster_path ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : defaultImg} alt="" width={250} />
       <h3>Overview</h3>
@@ -45,10 +40,10 @@ export default function MovieDetailsPage() {
       <p>Release date: {film.release_date}</p> 
       <h3>Genres</h3>
       {film.genres.map((genre) => {
-        return <p key={genre.id}>{genre.name}</p>
+        return <p key={genre.id}>{genre.name}</p>;
       })}
-      <Link to="actors">actors</Link>
-      <Link to="reviews">reviews</Link>
+      <Link to="actors">Actors</Link>
+      <Link to="reviews">Reviews</Link>
       <Outlet />
     </div>
   );
