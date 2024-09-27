@@ -5,10 +5,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import SearchForm from "../../components/SearchForm/SearchForm";
 
 export default function MoviesPage() {
-    const [films, setFilms] = useState(() => {
-        const savedFilms = sessionStorage.getItem("films");
-        return savedFilms ? JSON.parse(savedFilms) : [];
-    });
+    const [films, setFilms] = useState([]);
     const [searchParams] = useSearchParams();
     const submittedQuery = searchParams.get("query");
 
@@ -19,7 +16,6 @@ export default function MoviesPage() {
             try {
                 const response = await fetchFilmsByQuery(submittedQuery);
                 setFilms(response);
-                sessionStorage.setItem("films", JSON.stringify(response)); 
             } catch (error) {
                 alert(error);
             }
